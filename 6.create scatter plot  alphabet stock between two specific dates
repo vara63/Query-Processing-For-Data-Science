@@ -1,0 +1,26 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+data = {
+    'Date': pd.to_datetime([
+        '2020-04-01','2020-04-02','2020-04-03','2020-04-06','2020-04-07',
+        '2020-04-08','2020-04-09','2020-04-13','2020-04-14','2020-04-15'
+    ]),
+    'Close': [
+        1105.62, 1120.84, 1097.88, 1186.92, 1186.51,
+        1210.28, 1211.45, 1217.56, 1269.23, 1262.47
+    ],
+    'Volume': [
+        2343100, 3694900, 2313400, 2664700, 2387300,
+        1975100, 2175400, 1739800, 2470400, 1671700
+    ]
+}
+df = pd.DataFrame(data)
+start_date = '2020-04-01'
+end_date = '2020-04-15'
+filtered_df = df[(df['Date'] >= start_date) & (df['Date'] <= end_date)]
+plt.figure()
+plt.scatter(filtered_df['Close'], filtered_df['Volume'])
+plt.xlabel('Closing Stock Price')
+plt.ylabel('Trading Volume')
+plt.title('Alphabet Inc. Stock Price vs Trading Volume')
+plt.show()
