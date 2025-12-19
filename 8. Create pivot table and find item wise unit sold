@@ -1,0 +1,34 @@
+#code
+import pandas as pd
+sales_data = pd.DataFrame({
+    'Item': ['Pen', 'Pen', 'Pencil', 'Pencil', 'Eraser', 'Eraser'],
+    'Units_Sold': [10, 15, 20, 18, 5, 7]
+})
+print("Sales Data:")
+print(sales_data)
+pivot_table = pd.pivot_table(
+    sales_data,
+    index='Item',
+    values='Units_Sold',
+    aggfunc='sum'
+
+print("\nPivot Table (Item-wise Units Sold):")
+print(pivot_table)
+
+
+#output:-
+Sales Data:
+     Item  Units_Sold
+0     Pen          10
+1     Pen          15
+2  Pencil          20
+3  Pencil          18
+4  Eraser           5
+5  Eraser           7
+
+Pivot Table (Item-wise Units Sold):
+        Units_Sold
+Item              
+Eraser          12
+Pen             25
+Pencil          38
