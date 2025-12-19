@@ -1,0 +1,35 @@
+#code:-
+import pandas as pd
+sales_data = pd.DataFrame({
+    'Item': ['Pen', 'Pen', 'Pencil', 'Pencil', 'Eraser', 'Eraser'],
+    'Sale_Value': [120, 150, 80, 95, 40, 60]
+})
+print("Sales Data:")
+print(sales_data)
+pivot_table = pd.pivot_table(
+    sales_data,
+    index='Item',
+    values='Sale_Value',
+    aggfunc=['max', 'min']
+)
+print("\nPivot Table (Maximum & Minimum Sale Value):")
+print(pivot_table)
+
+
+#output:-
+Sales Data:
+     Item  Sale_Value
+0     Pen         120
+1     Pen         150
+2  Pencil          80
+3  Pencil          95
+4  Eraser          40
+5  Eraser          60
+
+Pivot Table (Maximum & Minimum Sale Value):
+              max        min
+       Sale_Value Sale_Value
+Item                        
+Eraser         60         40
+Pen           150        120
+Pencil         95         80
