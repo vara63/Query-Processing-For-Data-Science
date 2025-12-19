@@ -1,0 +1,67 @@
+#code
+import pandas as pd
+sales_data = pd.DataFrame({
+    'OrderDate': ['1-6-18','1-23-18','2-9-18','2-26-18','3-15-18','4-1-18',
+                  '4-18-18','5-5-18','5-22-18','6-8-18','6-25-18','7-12-18',
+                  '7-29-18','8-15-18','9-1-18','9-18-18','10-5-18','10-22-18'],
+    'Region': ['East','Central','Central','Central','West','East','Central',
+               'Central','West','East','Central','East','East','East',
+               'Central','East','Central','East'],
+    'Manager': ['Martha','Hermann','Hermann','Timothy','Timothy','Martha',
+                'Martha','Hermann','Douglas','Martha','Hermann','Martha',
+                'Douglas','Martha','Douglas','Martha','Hermann','Martha'],
+    'SalesMan': ['Alexander','Shelli','Luis','David','Stephen','Alexander',
+                 'Steven','Luis','Michael','Alexander','Sigal','Diana',
+                 'Karen','Alexander','John','Alexander','Sigal','Alexander'],
+    'Sale_amt': [113810,25000,43128,6075,67088,30000,89850,
+                 107820,38336,30000,107820,14500,
+                 40500,41930,250,936,14000,14400]
+})
+print("Sales Data:")
+print(sales_data)
+pivot_table = pd.pivot_table(
+    sales_data,
+    index=['Region', 'Manager', 'SalesMan'],
+    values='Sale_amt',
+    aggfunc='sum'
+)
+print("\nPivot Table: Total Sale Amount (Region, Manager, SalesMan wise)")
+print(pivot_table)
+
+
+#OUTPUT:
+Sales Data:
+   OrderDate   Region  Manager   SalesMan  Sale_amt
+0     1-6-18     East   Martha  Alexander    113810
+1    1-23-18  Central  Hermann     Shelli     25000
+2     2-9-18  Central  Hermann       Luis     43128
+3    2-26-18  Central  Timothy      David      6075
+4    3-15-18     West  Timothy    Stephen     67088
+5     4-1-18     East   Martha  Alexander     30000
+6    4-18-18  Central   Martha     Steven     89850
+7     5-5-18  Central  Hermann       Luis    107820
+8    5-22-18     West  Douglas    Michael     38336
+9     6-8-18     East   Martha  Alexander     30000
+10   6-25-18  Central  Hermann      Sigal    107820
+11   7-12-18     East   Martha      Diana     14500
+12   7-29-18     East  Douglas      Karen     40500
+13   8-15-18     East   Martha  Alexander     41930
+14    9-1-18  Central  Douglas       John       250
+15   9-18-18     East   Martha  Alexander       936
+16   10-5-18  Central  Hermann      Sigal     14000
+17  10-22-18     East   Martha  Alexander     14400
+
+Pivot Table: Total Sale Amount (Region, Manager, SalesMan wise)
+                           Sale_amt
+Region  Manager SalesMan           
+Central Douglas John            250
+        Hermann Luis         150948
+                Shelli        25000
+                Sigal        121820
+        Martha  Steven        89850
+        Timothy David          6075
+East    Douglas Karen         40500
+        Martha  Alexander    231076
+                Diana         14500
+West    Douglas Michael       38336
+        Timothy Stephen       67088
