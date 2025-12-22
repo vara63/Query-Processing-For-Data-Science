@@ -1,0 +1,39 @@
+#code:-
+import pandas as pd
+import numpy as np
+import webbrowser
+import os
+df = pd.DataFrame(
+    np.random.randn(10, 4),
+    columns=['A', 'B', 'C', 'D']
+)
+print("DataFrame:")
+print(df)
+print("\nBackground Color → Black")
+print("Font Color → Yellow")
+
+styled_df = df.style.set_properties(**{
+    'background-color': 'black',
+    'color': 'yellow'
+})
+
+file_name = "dataframe_style.html"
+styled_df.to_html(file_name)
+webbrowser.open('file://' + os.path.realpath(file_name))
+
+#output:-
+DataFrame:
+          A         B         C         D
+0 -1.362228 -0.750244  0.438710 -0.804464
+1  0.676431  0.239596 -0.470195 -2.314307
+2  0.660785  1.465618  0.030401 -0.225928
+3  0.112306 -1.506137  1.057274 -1.727436
+4 -1.329162  0.511824 -0.246343 -0.044700
+5 -1.242390 -0.282655  0.479390  0.638354
+6  1.268138 -1.393767 -0.397857  0.661595
+7 -0.663714  1.264370  0.388189 -1.388331
+8 -0.361908  0.982513  0.702803  0.793107
+9  0.922004 -0.090768  1.703135  2.517971
+
+Background Color → Black
+Font Color → Yellow
