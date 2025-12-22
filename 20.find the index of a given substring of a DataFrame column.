@@ -1,0 +1,13 @@
+#code:-
+import pandas as pd
+data = {
+    'Country': ['Viet Nam', 'Uruguay', "Cte d'Ivoire", 'Colombia', 'Saint Kitts and Nevis'],
+    'WHO region': ['Western Pacific', 'Americas', 'Africa', 'Americas', 'Americas']
+}
+df = pd.DataFrame(data)
+result = df[df['WHO region'].str.contains('Americas')].index
+
+print("Index positions:", result)
+
+#output:-
+Index positions: Index([1, 3, 4], dtype='int64')
