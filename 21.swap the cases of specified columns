@@ -1,0 +1,14 @@
+import pandas as pd
+data = {
+    'Name': ['Alice', 'bOB', 'ChArLiE'],
+    'City': ['New York', 'lOnDoN', 'DELHI']
+}
+df = pd.DataFrame(data)
+df['Name'] = df['Name'].str.swapcase()
+print(df)
+
+output:-
+      Name      City
+0    aLICE  New York
+1      Bob    lOnDoN
+2  cHaRlIe     DELHI
