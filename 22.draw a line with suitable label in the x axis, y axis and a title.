@@ -1,0 +1,11 @@
+import matplotlib.pyplot as plt
+x = [1, 2, 3, 49]
+y = [3, 6, 9, 147] 
+
+plt.plot(x, y, color='blue', linewidth=1)
+plt.xlabel('x - axis')
+plt.ylabel('y - axis')
+plt.title('Draw a line.')
+plt.xlim(0, 50)
+plt.ylim(0, 160)
+plt.show()
